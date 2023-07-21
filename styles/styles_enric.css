@@ -1,21 +1,54 @@
 
-/* #mainPage {
+body {
     background-color: lightblue;
-} */
+}
 
 .hangmanGame__selectGameButton {
     background-color: aquamarine;
 }
 
+/* COMMON */
+.button {
+    height: 2rem;
+}
+
+/* MAIN */
 .hangmanGame__container {
-    display: none;
-    background-color: lightblue;
+
+    display: felx;
+    background-color: lightseagreen;
     height: 100;
     width: 100%;
+
+    text-align: center;
 }
+
 .hangmanGame__Main {
-    display: flex;
-    
-  
+    display: none;
+    flex-direction: column;
+    height: 100vh;
     background-color: bisque;
+}
+
+
+
+/* GAME */
+.hangmanGame__Game {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: lightsalmon;
+}
+
+.hangmanGame__Game h1 {
+    background-color: red;
+}
+
+.hangmanGame__Game h2 {
+    color: green
+}
+
+.hangmanGame__Game__Container {
+    background-color: antiquewhite;
+    height: 20rem;
 }

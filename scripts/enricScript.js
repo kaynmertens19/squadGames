@@ -13,20 +13,21 @@ const hangmanGame__Main__initPageButton = document.querySelector('.hangmanGame__
 const hangmanGame__Main__playButton = document.querySelector('.hangmanGame__Main__playButton')
 
 /* GAME PAGE */
-const hangmanGame__gameContainer = document.querySelector('.hangmanGame__gameContainer')
+const hangmanGame__Game = document.querySelector('.hangmanGame__Game')
 const hangmanGame__Game__backButton = document.querySelector('.hangmanGame__Game__backButton')
 const hangmanGame__Game__initPageButton = document.querySelector('.hangmanGame__Game__initPageButton')
 
 
-
+/* NAVIGATION */
 /** main page **/  
 hangmanGame__selectGameButton.addEventListener('click', () => {
     openGame()
+    console.log('hangman game selecte')
 })
 function openGame() {
     mainPage.style.display = 'none'
-    hangmanGame__container.style.display = 'Block'
-    hangmanGame__Main.style.display = 'Block'
+    hangmanGame__container.style.display = 'flex'
+    hangmanGame__Main.style.display = 'flex'
     hangmanGame__selectGameButton.style.backgroundColor = 'red'
 }
 
@@ -35,7 +36,7 @@ hangmanGame__Main__initPageButton.addEventListener('click', () => {
 })
 function goMainPage() {
     hangmanGame__container.style.display = 'none'
-    mainPage.style.display = 'block'
+    mainPage.style.display = 'flex'
 
     hangmanGame__selectGameButton.style.backgroundColor = 'green'
 }
@@ -46,7 +47,7 @@ hangmanGame__Main__playButton.addEventListener('click', () => {
 })
 function playGame() {
     hangmanGame__Main__playButton.style.backgroundColor = 'green'
-    hangmanGame__gameContainer.style.display = 'block'
+    hangmanGame__Game.style.display = 'flex'
     hangmanGame__Main.style.display = 'none'
 }
 
@@ -57,11 +58,33 @@ hangmanGame__Game__backButton.addEventListener('click', () => {
     closeGame()
 })
 function closeGame() {
-    hangmanGame__gameContainer.style.display = 'none'
-    hangmanGame__Main.style.display = 'block'
+    hangmanGame__Game.style.display = 'none'
+    hangmanGame__Main.style.display = 'flex'
 }
 
 hangmanGame__Game__initPageButton.addEventListener('click', () => {
     closeGame()
     goMainPage()
 })
+
+
+
+/* PLAY */
+
+const wordLettersList = document.getElementById('wordLettersList')
+
+const wordArray = ['h','e', 'l', 'l', 'o'] 
+
+
+function addWord() {
+    for(let i = 0; i<0; i++){
+        const letterNode = document.createElement("li");
+        const letterTextnode = document.createTextNode(wordArray[i]);
+        letterNode.appendChild(letterTextnode);
+        
+        wordLettersList.appendChild(letterNode);
+        console.log(wordArray[i])
+    }
+}
+
+addWord()
