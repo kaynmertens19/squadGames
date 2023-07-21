@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css">
 </head>
 <body>
-    <section>pagina princpial
+    <section id="mainPage">pagina princpial
     </section>
 
     <section>juego 1
@@ -24,9 +24,15 @@
          <!-- Aday game -->
     </section>
 
-    <section>juego 4
-        <button class="memoryGame__button">memoryGame</button>
-        <!-- Enric game -->
+    <button class="hangmanGame__selectGameButton">hangmanGame</button>
+    <section class="hangmanGame__container">juego 4
+            <!-- Enric game -->
+            <main class="hangmanGame__Main">
+                <input class="hangmanGame__Main__inputUser"/>
+                <button class="hangmanGame__Main__playButton"> PLAY</button>
+                <button class="hangmanGame__Main__backButton"> BACK</button>
+            </main>
+            <article class="hangmanGame__gameContainer"></article>
     </section>
     
 

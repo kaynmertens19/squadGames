@@ -1,0 +1,21 @@
+
+/* #mainPage {
+    background-color: lightblue;
+} */
+
+.hangmanGame__selectGameButton {
+    background-color: aquamarine;
+}
+
+.hangmanGame__container {
+    display: none;
+    background-color: lightblue;
+    height: 100;
+    width: 100%;
+}
+.hangmanGame__Main {
+    display: flex;
+    
+  
+    background-color: bisque;
+}
