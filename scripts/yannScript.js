@@ -37,14 +37,15 @@ const startingButton = document.getElementById('startingButton');
 startingButton.addEventListener('click', () => {
 startGame.style.display = 'none';
 game.style.display = 'grid';
+    setTimeout(function() {
+    game.style.display = 'none';
+    replay.style.display = 'grid'; 
+    }, 10000);
 });
-// set interval to 10 sec. Moment button action.
 const gameButton = document.getElementById('gameButton');
 gameButton.addEventListener('click', () => {
-game.style.display = 'none';
-replay.style.display = 'grid'; 
 });
-// set interval to 10 sec. Moment button action.
+
 const backHomeButton = document.getElementById('backHomeButton');
 backHomeButton.addEventListener('click', () => {
 replay.style.display = 'none'; 
@@ -67,7 +68,9 @@ hard.style.display = 'grid';
 });
 const gameButtonHard = document.getElementById('gameButtonHard');
 gameButtonHard.addEventListener('click', () => {
-hard.style.display = 'none';
-replay.style.display = 'grid';
-// set timer and random
+    setTimeout(function() {
+    hard.style.display = 'none';
+    replay.style.display = 'grid'; 
+    }, 10000);
+    //set random
 });
