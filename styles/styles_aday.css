@@ -1,0 +1,131 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* sección para definir el tamaño y el posicionamiento de las cajas principales. Además he añadido color y boxshadow para definirlas mejor en el encuadre */
+
+body{
+    background-color: rgb(207, 205, 205);
+}
+
+
+/* posicionamiento y color de la caja del juego */
+.main_juego-div{
+    background-color: white;
+    border-radius: 10px;
+    height: 60vh;
+    width: 50vw;
+    position: relative;
+    left: 5vw;
+    top: 12vh;
+    box-shadow: 1px 1px 50px 1px rgb(152, 151, 151);
+}
+/* posicionamiento y color de la caja de la puntuación */
+.main_players-div{
+    background-color: white;
+    border-radius: 10px;
+    height: 60vh;
+    width: 20vw;
+    position: relative;
+    left: 15vw;
+    top: 12vh;
+    box-shadow: 1px 1px 50px 1px rgb(152, 151, 151);
+}
+
+/* colocación estilo flex para mantenerlos a niveles igualados */
+.flex-main{
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* sección para definir el posicionamiento la decoración y el color de los objetos dentro de la sección main juego */
+
+
+/* flex para poner en columna los elementos del jeugo */
+.juego-div_flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 15em;
+}
+
+/* flex para mantener el formulario en su sitio */
+.form_flex{
+    display: flex;
+    flex-direction: column;
+}
+
+/* editando el tamaño y el margin del h1 */
+
+h1{
+    font-size: 3.5vw;
+    margin-bottom: 1em;
+}
+
+/* dandole un tamaño y una posición al imput que recoje el usuario */
+.input_username{
+    width: 22vw;
+    height: 3em;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    border-radius: 5px;
+    font-size: 1em;
+}
+/* dandole un tamaño y una posición al botón que recoje el usuario */
+
+.input_username_button{
+    width: 22vw;
+    height: 3em;
+    border-radius: 5px;
+    font-size: 1em;
+    color: white;
+    background-color: black;
+    border:none;
+}
+
+.game_button{
+    width: 30vw;
+    height: 5em;
+    border-radius: 5px;
+    font-size: 1em;
+    color: white;
+    background-color: black;
+    border:none;
+    position: absolute;
+    top: 6em;
+    
+}
+/* sección para definir el posicionamiento la decoración y el color de los objetos dentro de la sección main players */
+
+.players_div-flex{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 2em;
+    left: 2em;
+}
+
+.user-scoreTittle{
+    font-size: 2em;
+}
+
+.h2_posittion{
+margin-bottom: 0.4em;
+margin-top: 0.5em;
+}
+
+
+.display_none{
+    display: none;
+}
+
+.display_block{
+    display: block;
+}
+
+.display_flex{
+    display: flex;
+}

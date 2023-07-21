@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="flex-main">
+
+        <!-- seccion para el juego -->
+        <div class="main_juego-div">
+            <div class="juego-div_flex">
+                <h1 id="tittle" class="display_block">Choose a user name</h1>
+                <form id="form_game" class="form_flex display_flex">
+                    <label class="username" for="name">User Name</label>
+                    <input class="input_username" type="text" name="name" id="name">
+                    <input onclick="agregarUsuario()" class="input_username_button" type="button" id="buttonUser" value="Start">
+                </form>
+                <button id="button_game"  class="game_button display_none">Click ¡ME!</button>
+            </div>
+        </div>
+
+
+        <!-- seccion para la parte de usuarios -->
+
+        <div class="main_players-div">
+            
+            <div id="playerDiv" class="players_div-flex">
+                <h2 class="user-scoreTittle">User scores</h2>
+                
+            </div>
+        </div>
+    </main>
+
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
