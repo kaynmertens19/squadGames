@@ -22,7 +22,7 @@ const hangmanGame__Game__initPageButton = document.querySelector('.hangmanGame__
 /** main page **/  
 hangmanGame__selectGameButton.addEventListener('click', () => {
     openGame()
-    console.log('hangman game selecte')
+    console.log('hangman game selected')
 })
 function openGame() {
     mainPage.style.display = 'none'
@@ -43,9 +43,17 @@ function goMainPage() {
 
 
 hangmanGame__Main__playButton.addEventListener('click', () => {
-    playGame()
+
+    if (validateUser()) {
+        console.log("is valid user")
+        playGame()
+    } else {
+        console.log("invalid user")
+    }
+
 })
 function playGame() {
+    
     hangmanGame__Main__playButton.style.backgroundColor = 'green'
     hangmanGame__Game.style.display = 'flex'
     hangmanGame__Main.style.display = 'none'
@@ -67,24 +75,87 @@ hangmanGame__Game__initPageButton.addEventListener('click', () => {
     goMainPage()
 })
 
+/* user input validate */
+// let isValidUser = validateUser()
+function validateUser() {
+    const username = document.getElementById('username');
+    let isValid = true;
+
+    if (username.value.trim() === '') {
+        displayError(username, 'Username is required.');
+        isValid = false;
+        console.log("no user name")
+      } else if (username.value.trim().includes(' ')) {
+        displayError(username, 'Username should not contain spaces.');
+        isValid = false;
+        console.log(" Username should not contain spaces.")
+
+      } else if (username.value.length < 5 || username.value.length > 20) {
+        displayError(username, 'Username should be between 5 and 20 characters.');
+        isValid = false;
+        console.log(" Username should be between 5 and 20 characters.")
+
+      } else {
+        hideError(username);
+      }
+
+      return isValid;
+}
+// Función para mostrar el mensaje de error
+function displayError(element, errorMessage) {
+    const errorElement = element.nextElementSibling;
+    errorElement.textContent = errorMessage;
+    errorElement.style.display = 'block';
+  }
+// Función para ocultar el mensaje de error
+function hideError(element) {
+    const errorElement = element.nextElementSibling;
+    errorElement.textContent = '';
+    errorElement.style.display = 'none';
+  }
+  
+
 
 
 /* PLAY */
 
+const hangmanGame__Game__initGameButton = document.querySelector('.hangmanGame__Game__initGameButton')
 const wordLettersList = document.getElementById('wordLettersList')
+const playingWords = ['Apple', 'Banana', 'Apricot', 'Olive', 'Oranges',	'Ramphal', 'Papaya', 'Peach', 'Pomegranate', 'Pineapple', 'Rambutan', 'Raspberries', 'Strawberries','Starfruit',]
+let wordArray = ['h','e', 'l', 'l', 'o'] 
 
-const wordArray = ['h','e', 'l', 'l', 'o'] 
 
+hangmanGame__Game__initGameButton.addEventListener('click', () => {
+    startGame()
+})
+
+function selectWord() {
+    const index = Math.floor(Math.random() * playingWords.length);
+    const selectedWord = playingWords[index]
+    const stringArray = selectedWord.split('')
+    wordArray = stringArray
+}
 
 function addWord() {
-    for(let i = 0; i<0; i++){
+    clearWord()
+    console.log(wordArray)
+    const wordLength = wordArray.length
+    for(let i = 0; i<wordLength; i++){
         const letterNode = document.createElement("li");
         const letterTextnode = document.createTextNode(wordArray[i]);
         letterNode.appendChild(letterTextnode);
-        
         wordLettersList.appendChild(letterNode);
-        console.log(wordArray[i])
     }
 }
 
-addWord()
+function clearWord() {
+    while (wordLettersList.hasChildNodes()) {
+        wordLettersList.removeChild(wordLettersList.firstChild);
+      }
+}
+
+function startGame() {
+    selectWord()
+    addWord()
+}
+

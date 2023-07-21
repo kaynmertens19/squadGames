@@ -24,15 +24,36 @@
          <!-- Aday game -->
     </section>
 
+
+    <!-- Enric game -->
     <button class="hangmanGame__selectGameButton">hangmanGame</button>
-    <section class="hangmanGame__container">juego 4
-            <!-- Enric game -->
+    <section class="hangmanGame__container">Juego 4: HangMan Game
+            
             <main class="hangmanGame__Main">
-                <input class="hangmanGame__Main__inputUser"/>
-                <button class="hangmanGame__Main__playButton"> PLAY</button>
-                <button class="hangmanGame__Main__backButton"> BACK</button>
+                <h1>HangMan Game</h1>
+                <!-- <input class="hangmanGame__Main__inputUser"/> -->
+                <form id="profileForm" class="formContainer">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" minlength="5" maxlength="20" required>
+                    <p id="usernameError" class="error-message"></p>
+                </form>
+                <button class="hangmanGame__Main__playButton button"> PLAY</button>
+                <button class="hangmanGame__Main__initPageButton button"> Go to select Game</button>
             </main>
-            <article class="hangmanGame__gameContainer"></article>
+
+            <article class="hangmanGame__Game">
+                <h1>HangMan Game</h1>
+                <h2>user name</h2>
+                <div class="hangmanGame__Game__Container">game container
+                    <ul id="wordLettersList">
+                        
+                    </ul>
+                </div>
+                <button class="hangmanGame__Game__initGameButton  button"> new word</button>
+                <button class="hangmanGame__Game__backButton button "> BACK</button>
+                <button class="hangmanGame__Game__initPageButton button"> Select Game</button>
+            </article>
+
     </section>
     
 
