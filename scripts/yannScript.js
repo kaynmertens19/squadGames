@@ -1,5 +1,22 @@
-const tenClick__button = document.querySelector('.tenClickGame__button')
-
-tenClick__button.addEventListener('click', () => {
-    tenClick__button.style.backgroundColor = 'red'
-})
+const initialFrame = document.getElementById('frame1A');
+const startGame = document.getElementById('frame1B');
+const game = document.getElementById('frame1C');
+const replay = document.getElementById('frame1D');
+const level = document.getElementById('frame1E');
+const hard = document.getElementById('frame1F');
+const mainPage = document.getElementById('mainPage');
+const juego1 = document.getElementById('juego1');
+const juego2 = document.getElementById('juego2');
+const juego3 = document.getElementById('juego3');
+const juego4 = document.getElementById('juego4');
+// juego1.style.display = 'none';
+juego2.style.display = 'none';
+juego3.style.display = 'none';
+juego4.style.display = 'none';
+// initialFrame.style.display = 'none';
+mainPage.style.display = 'none';
+startGame.style.display = 'none';
+game.style.display = 'none';
+replay.style.display = 'none'; 
+level.style.display = 'none';
+hard.style.display = 'none';

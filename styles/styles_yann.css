@@ -1,0 +1,331 @@
+ .juego1{
+    display: flex;
+    background-color: darkgrey;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.main-container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15% auto;
+    grid-template-columns: 50% 50%;
+    height: 100%;
+    width: 90%;
+    background-color: darkgray;
+}
+/* /////////////////////////////////////////////////// FRAME1 A // INITIAL FRAME //////////////////////////////////////////////// */
+.frame1A{
+    display: grid;
+    text-align: center;   
+    width: 80%; 
+    height: 12rem;
+    margin:1rem 1rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.frame1Arow{
+    height: 2rem;
+    padding: 0.2rem;
+}
+.chooseUser{
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+.userNameInput{
+    border-radius: 1rem;
+    border-style: dotted;
+}
+.playingButton{
+    border-radius: 1rem;
+    padding: 0.4rem;
+    background-color: black;
+    color: white;
+}
+.playingButton:hover{
+    background-color: grey;
+    transform: scale(1.05);
+}
+/* /////////////////////////////////////////////////// FRAME1 B // START GAME //////////////////////////////////////////////// */
+.frame1B{
+    display: grid;
+    text-align: center;   
+    width: 80%; 
+    height: 12rem;
+    margin:1rem 1rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.frame1Brow{
+    display: flex;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+   
+}
+.startingButton{
+    height: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+.startingButton:hover{
+    background-color: grey;
+    transform: scale(1.05);
+}
+/* /////////////////////////////////////////////////// FRAME1 C // MAIN GAME //////////////////////////////////////////////// */
+.frame1C{
+    display: grid;
+    text-align: center;   
+    width: 80%; 
+    height: 12rem;
+    margin:1rem 1rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.frame1Crow{
+    display: flex;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+}
+.gameButton{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+.gameButton:active{
+    background-color: grey;
+    transform: scale(1.05);
+}
+/* /////////////////////////////////////////////////// FRAME1 D // REPLAY/BACK  //////////////////////////////////////////////// */
+.frame1D{
+    display: grid;
+    text-align: center;   
+    width: 80%; 
+    height: 12rem;
+    margin:1rem 1rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.frame1Drow{
+    height: 2rem;
+    padding: 0.2rem;
+}
+.yourScore{
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+.expired{
+    line-height: 3rem;
+    font-size: 1rem;
+}
+.youmade{
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+.playAgainButton{
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+.playAgainButton:hover{
+    background-color: grey;
+    transform: scale(1.05);
+}
+.backHomeButton{
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+.backHomeButton:hover{
+    background-color: grey;
+    transform: scale(1.05);
+}
+/* /////////////////////////////////////////////////// FRAME1 E // SELECT LEVEL //////////////////////////////////////////////// */
+.frame1E{
+    display: grid;
+    text-align: center;   
+    width: 80%; 
+    height: 12rem;
+    margin:1rem 1rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.frame1Erow{
+    display: flex;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+}
+.sameLevelButton{
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+.sameLevelButton:hover{
+    background-color: grey;
+    transform: scale(1.05);
+}
+.harderLevelButton{
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+.harderLevelButton:hover{
+    background-color: grey;
+    transform: scale(1.05);
+}
+/* /////////////////////////////////////////////////// FRAME1 F //  HARD LEVEL //////////////////////////////////////////////// */
+.frame1Frow{
+    display: flex;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+}
+.frame1F{
+    display: grid;
+    text-align: center;   
+    width: 80%; 
+    height: 12rem;
+    margin:1rem 1rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.gameButtonHard{
+    font-size: 0.40rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+.gameButtonHard:active{
+    background-color: grey;
+    transform: scale(1.05);
+}
+
+/* /////////////////////////////////////////////////// FRAME 2 //////////////////////////////////////////////// */
+.frame2{
+    display: grid;
+    text-align: center;
+    width: 60%;
+    height: 100%;
+    margin: 1rem 2rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.frame2row{
+    height: 1rem;
+    padding: 0.35rem;
+}
+.userScores{
+    line-height: 3rem;
+    font-size: 1.2rem;
+}
+.name{
+    font-size: 1.1rem;
+    padding-left: 25%;
+    text-align:start;
+}
+.currentStatus{
+    font-style: italic;
+}
+
+/* media media media media media media media media media media media */
+
+@media (min-width: 840px){
+.main-container{
+    flex-flow: row;
+    margin: 7% auto;
+}
+.frame1A,
+.frame1B,
+.frame1C,
+.frame1D,
+.frame1E,
+.frame1F,
+.frame2 {
+    height: 35rem;
+}
+.chooseUser,
+.yourScore{
+    font-size: 4rem;
+}
+.userName,
+.expired{
+    font-size: 3rem;
+}
+.userNameInput,
+.youMade{
+    font-size: 2rem;
+}
+.startingButton,
+.playAgainButton,
+.backHomeButton,
+.sameLevelButton,
+.harderLevelButton{
+    height: 6rem;
+    width: 15rem;
+}
+.gameButton{
+    height: 20rem;
+    width: 20rem;
+}
+.gameButton:hover{
+    background-color: black;
+}
+.gameButton:active{
+    background-color: grey;
+    transform: scale(1.05);
+}
+.gameButtonHard{
+    height: 10rem;
+    width: 10rem;
+    font-size: 2rem;
+}
+
+
+
+.userScores{
+    font-size: 3.5rem;
+}
+
+
+.playingButton{
+    border-radius: 2rem;
+    padding: 1rem;
+    font-size: 3rem;
+}
+.name{
+    font-size: 2rem;
+}
+.currentStatus{
+    font-size: 1.5rem;
+}
+
+}

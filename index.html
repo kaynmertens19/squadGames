@@ -6,26 +6,130 @@
     <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css">
 </head>
 <body>
-    <section>pagina princpial
-    </section>
-
-    <section>juego 1
+    <section id="mainPage">pagina princpial
         <button class="tenClickGame__button">tenClickGame</button>
-        <!-- Yann game -->
+        <button class="boxGame__button">boxGame</button>
+        <button class="hangmanGame__button">hangmanGame</button>
+        <button class="memoryGame__button">memoryGame</button>
+
     </section>
 
-    <section>juego 2
-        <button class="boxGame__button">boxGame</button>
+    <section  class="juego1" id="juego1">
+        
+        <!-- Yann game -->
+    
+    <main class="main-container">
+        <!-- changing sections FRAME 1A -------------------------------------------INTRO / USER REGISTRATION ---------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->
+            <section class="frame1A" id="frame1A">
+                <div class="frame1Arow frame1Arow1"><h2 class="chooseUser"><strong>Choose a user name</strong></h2>
+                </div>
+                <div class="frame1Arow frame1Arow2">
+                </div>
+                <div class="frame1Arow frame1Arow3"><h3 class="userName">User name: </h3>   
+                </div>
+                <div class="frame1Arow frame1Arow4"><input type="text" class="userNameInput" id="username" placeholder="Write your user name">
+                </div>
+                <div class="frame1Arow frame1Arow5">
+                    <button class="playingButton" id="playingButton">PLAY</button>
+                </div>
+                <div class="frame1Arow frame1Arow6">
+                </div>
+            </section>
+        <!-- changing sections FRAME 1B--------------------------------------------------START GAME ---------------------------------------------------- -->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->
+        <section class="frame1B" id="frame1B">
+            <div class="frame1Brow frame1Brow1">
+                <button class="startingButton" id="startingButton">START GAME</button>
+            </div>
+        </section>
+        <!-- changing sections FRAME 1C --------------------------------------------------GAME-------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->
+        <section class="frame1C" id="frame1C">
+            <div class="frame1Crow frame1Crow1">
+                <button class="gameButton" id="gameButton">CLICK HERE!</button>
+            </div>
+        </section>
+        <!-- changing sections FRAME 1D -------------------------------------------------BACK/REPLAY --------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->
+        <section class="frame1D" id="frame1D">
+            <div class="frame1Drow frame1Drow1"><h2 class="yourScore">Your score:</h2></div>
+            <div class="frame1Drow frame1Drow2"><h4 class="expired">Your 10 seconds has expired!</h4></div>
+            <div class="frame1Drow frame1Drow3"><h3 class="youMade">You have made <span id="totalClicks"></span> Clicks!</h3></div>
+            <div class="frame1Drow frame1Drow4">
+                <button class="playAgainButton" id="playAgainButton">PLAY AGAIN?</button> <!-- FRAME 1E-->
+            </div>
+            <div class="frame1Drow frame1Drow5">
+                <button class="backHomeButton" id="backHomeButton">BACK HOME</button> <!-- FRAME 1A-->
+            </div>
+        </section> 
+        <!-- changing sections FRAME 1E -------------------------------------------------PLAY AGAIN --------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->
+        <section class="frame1E" id="frame1E">
+            <div class="frame1Erow frame1Erow1">
+                <button class="sameLevelButton" id="sameLevelButton">SAME LEVEL</button> <!-- FRAME 1C-->
+            </div>
+            <div class="frame1Erow frame1Erow2">
+                <button class="harderLevelButton" id="harderLevelButton">HARDER</button> <!-- FRAME 1F-->
+            </div>
+        </section>
+    
+        <!-- changing sections FRAME 1F -------------------------------------------------HARDER GAME --------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->
+        <section class="frame1F" id="frame1F">
+            <div class="frame1Frow frame1Frow1">
+                <button class="gameButtonHard" id="gameButtonHard">CLICK HERE FASTER!</button>
+            </div>
+        </section> 
+        <!-- return to FRAME 1D BACK/REPLAY ----------------------------------------------------------------------------------------------------------------- --> 
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------->  
+        <!-- score section FRAME 2      -->
+            <section class="frame2">
+                
+                <div class="frame2row frame2row1"><h2 class="userScores">Scores:</h2>
+                </div>
+                <div class="frame2row frame2row2"></div>
+                <div class="frame2row frame2row3"><h3 class="name" id="name1">Name1</h3>
+                </div>
+                
+                <div class="frame2row frame2row4"><h4 class="currentStatus" id="name1status"> playing</h4>
+                </div>
+                
+                <div class="frame2row frame2row5"><h3 class="name" id="name2">Name2</h3>
+                </div>
+                
+                <div class="frame2row frame2row6"><h4 class="currentStatus" id="name2status"> score</h4>
+                </div>
+                
+                <div class="frame2row frame2row7"><h3 class="name" id="name3">Name3</h3>
+                </div>
+                
+                <div class="frame2row frame2row8"><h4 class="currentStatus" id="name3status"> score</h4>
+                </div>
+                
+                <div class="frame2row frame2row9"><h3 class="name" id="name4">name4</h3>
+                </div>
+                
+                <div class="frame2row frame2row10"><h4 class="currentStatus" id="name4status"> score</h4>
+                </div>
+                
+            </section>
+    
+        </main>
+    </section>
+
+    <section id="juego2">juego 2
         <!-- Amina game -->    
     </section>
 
-    <section>juego 3
-        <button class="hangmanGame__button">hangmanGame</button>
+    <section id="juego3">juego 3
+       
          <!-- Aday game -->
     </section>
 
-    <section>juego 4
-        <button class="memoryGame__button">memoryGame</button>
+    <section id="juego4">juego 4
+        
         <!-- Enric game -->
     </section>
     
