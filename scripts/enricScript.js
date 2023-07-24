@@ -16,7 +16,8 @@ const hangmanGame__Main__playButton = document.querySelector('.hangmanGame__Main
 const hangmanGame__Game = document.querySelector('.hangmanGame__Game')
 const hangmanGame__Game__backButton = document.querySelector('.hangmanGame__Game__backButton')
 const hangmanGame__Game__initPageButton = document.querySelector('.hangmanGame__Game__initPageButton')
-
+const hangmanGame__Game__Container = document.querySelector('hangmanGame__Game__Container')
+const hangmanGame__Game__chooseLeterContainer = document.querySelector('.hangmanGame__Game__chooseLeterContainer')
 
 /* NAVIGATION */
 /** main page **/  
@@ -91,7 +92,7 @@ function validateUser() {
         isValid = false;
         console.log(" Username should not contain spaces.")
 
-      } else if (username.value.length < 5 || username.value.length > 20) {
+      } else if (username.value.length < 3 || username.value.length > 20) {
         displayError(username, 'Username should be between 3 and 20 characters.');
         isValid = false;
         console.log(" Username should be between 3 and 20 characters.")
@@ -133,8 +134,20 @@ hangmanGame__Game__initGameButton.addEventListener('click', () => {
     startGame()
 })
 function startGame() {
+    resetGame()
     selectWord()
     addWord()
+    playerLifesTitle.innerText = 'lifes: '+playerLifes
+    hangmanGame__Game__introLetterButton.disabled = false
+
+}
+function resetGame() {
+    clearWord()
+    validLetters = 0;
+    selectedLetter;
+   
+    attemps = [];
+    playerLifes = 5;
 }
 
 function selectWord() {
@@ -142,10 +155,12 @@ function selectWord() {
     const selectedWord = playingWords[index].toUpperCase()
     const stringArray = selectedWord.split('')
     wordArray = stringArray
+
+    hangmanGame__Game__chooseLeterContainer.style.display = 'flex'
 }
 
 function addWord() {
-    clearWord()
+   
     console.log(wordArray)
     const wordLength = wordArray.length
     for(let i = 0; i<wordLength; i++){
@@ -168,23 +183,55 @@ function clearWord() {
 /* GAME - play */
 
 let selectedLetter;
+let attemps = [];
+let playerLifes = 5;
+
 const hangmanGame__Game__introLetterButton = document.querySelector('.hangmanGame__Game__introLetterButton')
 const input__selectedLetter = document.getElementById('letter')
+const letterAttempsTitle =  document.querySelector('.letterAttempsTitle')
+const playerLifesTitle = document.querySelector('.playerLifesTitle')
 
 hangmanGame__Game__introLetterButton.addEventListener('click', () => {
 
-    if (chooseLetter() ) {
+
+
+    if (isChoosenLetterValid() ) {
+        if (isLetterMatch()) {
+            console.log("your letter is in word")
+            doMatch()
+        } else {
+            looselife()
+            console.log("your letter isn't in word - loose life")
+        }
+       
         console.log("is valid letter")
-        validateLetter()
+        return true
     } else {
+      
+        // list letter selected - try again - loose life
         console.log("invalid letter")
+        return false
+    }
+
+
+  
+    input__selectedLetter.value = ''
+})
+
+function isLetterMatch() {
+
+    for(let letter of wordArray) {
+
+        if (letter === input__selectedLetter.value) {
+            return true
+        }
     }
 
     console.log(selectedLetter)
 
-})
+}
 
-function chooseLetter() {
+function isChoosenLetterValid() {
     let isValid = true;
 
     if (input__selectedLetter.value.trim() === '') {
@@ -195,10 +242,16 @@ function chooseLetter() {
         displayError(input__selectedLetter, 'Choose one uppercase letter please.');
         isValid = false;
         selectedLetter = input__selectedLetter.value
+    } else if (isSecondAttempt(selectedLetter = input__selectedLetter.value
+        )) {
+        looselife()
+        displayError(input__selectedLetter, 'you already tried this letter. - loose life');
+        selectedLetter = input__selectedLetter.value
+        isValid = false;
     } else {
         hideError(input__selectedLetter);
-        hangmanGame__Game__introLetterButton.style.backgroundColor = 'green'
         selectedLetter = input__selectedLetter.value
+        scoreTry()
     }
 
     return isValid;
@@ -207,22 +260,64 @@ function chooseLetter() {
 function isValidLetter(selectedLetter) {
     const passwordRegex = /^[A-Z]+$/;
     return passwordRegex.test(selectedLetter);
-  }
+}
+
+function isSecondAttempt(letter) {
+    for (let attemp of attemps) {
+        if (letter === attemp) {
+            return true
+        }
+        console.log(letter +' is in attmps')
+    }  
+    return false
+}
 
 
-function validateLetter() {
-    // for li in wordLettersList check if letter.innertext === selected letter
-
-    console.log('word letters list' + wordLettersList)
-
+function scoreTry() {
+    attemps.push(input__selectedLetter.value)
+//     letterAtempsTitle.innerText = letterAtempsTitle.innerText+' - '+input__selectedLetter.value
+    letterAttempsTitle.innerText = 'Attemps: ' +attemps
+    console.log(letterAttempsTitle.innerText)
    
-    var liItems = wordLettersList.getElementsByTagName('li')
+}
+
+var validLetters = 0;
+function doMatch() {
+    var liItems = wordLettersList.getElementsByTagName('li');
+
     for(let i = 0; i < liItems.length; i++) {
-        console.log(liItems[i].innerText + '<=')
+        if (selectedLetter === liItems[i].innerText) {
+            console.log(liItems[i] + 'the word contains your letter')
+            liItems[i].classList.remove('noneLetter')  
+            liItems[i].classList.add('validLetter')
+            validLetters += 1
+            console.log('valid letters = ' + validLetters)
+            console.log(liItems.length)
+        }
     }
 
-     
-   
+    isGameEnd(liItems.length)
+}
 
+function looselife() {
+    if (playerLifes >1) {
+        playerLifes -= 1
+        playerLifesTitle.innerText = 'lifes: '+playerLifes
+    } else if  (playerLifes === 1) {
+        playerLifesTitle.innerText = 'You are death'
+        hangmanGame__Game__introLetterButton.disabled = true
+    }
 
 }
+
+
+
+
+
+function isGameEnd(length) {
+    if (validLetters === length) {
+        hangmanGame__Game.style.backgroundColor = 'green'
+        console.log('WIN!!')
+    }
+}
+

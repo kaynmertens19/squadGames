@@ -46,20 +46,25 @@
             <article class="hangmanGame__Game">
                 <h1>HangMan Game</h1>
                 <h2 class="hangmanGame__Game__userNameTitle"></h2>
-                <div class="formContainer">
+                <div class="hangmanGame__Game__chooseLeterContainer formContainer ">
 
                     <form id="letterForm">
                         <label for="letter">choose letter:</label>
                         <input type="text" id="letter" name="letter" minlength="1" maxlength="1" required>
                         <p id="letterError" class="error-message"></p>
-                        <button class="hangmanGame__Game__introLetterButton button"> ok</button>
                     </form>
+                    <button class="hangmanGame__Game__introLetterButton button"> ok</button>
+
                 </div>
                 <div class="hangmanGame__Game__Container">game container
                     <ul id="wordLettersList">
                         
                     </ul>
+                    <h2 class="letterAttempsTitle">attempts</h2>
+                    <h2 class="playerLifesTitle">player lifes</h2>
                 </div>
+              
+
                 <button class="hangmanGame__Game__initGameButton  button"> new word</button>
                 <br>
                 <button class="hangmanGame__Game__backButton button "> BACK</button>

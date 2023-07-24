@@ -114,8 +114,12 @@ body {
 }
 
 .hangmanGame__Game__Container {
+    /* display: none; */
     background-color: antiquewhite;
     height: 20rem;
+}
+.hangmanGame__Game__chooseLeterContainer {
+    display: none;
 }
 
 .hangmanGame__Game__Container ul {
@@ -131,6 +135,7 @@ body {
     margin: 0.2rem;
     padding: 1rem;
     background-color: red;
+    font-size: 0;
 }
 
 
@@ -139,5 +144,7 @@ body {
     margin: 0.2rem;
     padding: 1rem;
     background-color: greenyellow;
+    font-size: 1rem;
+
 }
 
