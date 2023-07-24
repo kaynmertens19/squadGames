@@ -14,7 +14,7 @@ body {
 /* MAIN */
 .hangmanGame__container {
 
-    display: flex;
+    display: none;
     flex-direction: column;
 
     background-color: lightseagreen;
@@ -126,7 +126,7 @@ body {
 
 }
 
-.hangmanGame__Game__Container li {
+.noneLetter {
     display: block;
     margin: 0.2rem;
     padding: 1rem;
@@ -134,6 +134,10 @@ body {
 }
 
 
-
-
+.validLetter {
+    display: block;
+    margin: 0.2rem;
+    padding: 1rem;
+    background-color: greenyellow;
+}
 

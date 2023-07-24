@@ -126,7 +126,7 @@ function hideError(element) {
 const hangmanGame__Game__initGameButton = document.querySelector('.hangmanGame__Game__initGameButton')
 const wordLettersList = document.getElementById('wordLettersList')
 const playingWords = ['Apple', 'Banana', 'Apricot', 'Olive', 'Oranges',	'Ramphal', 'Papaya', 'Peach', 'Pomegranate', 'Pineapple', 'Rambutan', 'Raspberries', 'Strawberries','Starfruit',]
-let wordArray = ['h','e', 'l', 'l', 'o'] 
+let wordArray;
 
 
 hangmanGame__Game__initGameButton.addEventListener('click', () => {
@@ -175,7 +175,7 @@ hangmanGame__Game__introLetterButton.addEventListener('click', () => {
 
     if (chooseLetter() ) {
         console.log("is valid letter")
-       
+        validateLetter()
     } else {
         console.log("invalid letter")
     }
@@ -200,14 +200,29 @@ function chooseLetter() {
         hangmanGame__Game__introLetterButton.style.backgroundColor = 'green'
         selectedLetter = input__selectedLetter.value
     }
-    
 
-     return isValid;
-
+    return isValid;
 }
 
-// Función auxiliar para validar la fortaleza de la contraseña
 function isValidLetter(selectedLetter) {
     const passwordRegex = /^[A-Z]+$/;
     return passwordRegex.test(selectedLetter);
   }
+
+
+function validateLetter() {
+    // for li in wordLettersList check if letter.innertext === selected letter
+
+    console.log('word letters list' + wordLettersList)
+
+   
+    var liItems = wordLettersList.getElementsByTagName('li')
+    for(let i = 0; i < liItems.length; i++) {
+        console.log(liItems[i].innerText + '<=')
+    }
+
+     
+   
+
+
+}
