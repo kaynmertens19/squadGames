@@ -39,7 +39,7 @@
 }
 .userNameInput{
     border-radius: 1rem;
-    border-style: dotted;
+    border-style: 2px solid black;
 }
 .playingButton{
     border-radius: 1rem;
@@ -240,15 +240,15 @@
     border-radius: 0.5rem;
 }
 .frame2row{
-    height: 1rem;
+    height: 1.5rem;
     padding: 0.35rem;
 }
 .userScores{
-    line-height: 3rem;
-    font-size: 1.2rem;
+    line-height: 2rem;
+    font-size: 1.0rem;
 }
 .name{
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     padding-left: 25%;
     text-align:start;
 }

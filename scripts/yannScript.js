@@ -20,6 +20,12 @@ game.style.display = 'none';
 replay.style.display = 'none'; 
 level.style.display = 'none';
 hard.style.display = 'none';
+let clickButtonResult = 0;
+let clickButtonResultHard = 0;
+const player = {
+    name: ''
+}
+
 const tenClick__button = document.querySelector('.tenClickGame__button');
 tenClick__button.addEventListener('click', () => {
 juego1.style.display = 'block';
@@ -33,10 +39,10 @@ playingButton.addEventListener('click', () => {
     initialFrame.style.display = 'none';
     startGame.style.display = 'grid';
     }
-    const player = {
-        name: `${userName.value}`
-    }
-    console.log(player.name);
+    player.name = userName.value
+
+    document.getElementById('name1').textContent = player.name;
+    
 });
 const startingButton = document.getElementById('startingButton');
 startingButton.addEventListener('click', () => {
@@ -45,15 +51,36 @@ game.style.display = 'grid';
     setTimeout(function() {
     game.style.display = 'none';
     replay.style.display = 'grid'; 
+    
+    document.getElementById('name1statusEasy').textContent = `Top Easy: ${clickButtonResult}`;
+    document.getElementById('totalClicks').textContent = clickButtonResult;
+    
     }, 10000);
+    clickButtonResult = 0;
+    
 });
 const gameButton = document.getElementById('gameButton');
 gameButton.addEventListener('click', () => {
+    clickButtonResult++;
+    // document.getElementById('name1Status').value = clickButtonResult;
+   
 });
 const backHomeButton = document.getElementById('backHomeButton');
 backHomeButton.addEventListener('click', () => {
 replay.style.display = 'none'; 
 initialFrame.style.display = 'grid';
+document.getElementById('name2').textContent = document.getElementById('name1').textContent = player.name;
+document.getElementById('name2statusEasy').textContent = document.getElementById('name1statusEasy').textContent;
+document.getElementById('name2statusHard').textContent = document.getElementById('name1statusHard').textContent;
+document.getElementById('name1').textContent = player.name = '';
+document.getElementById('name1statusEasy').textContent = '';
+document.getElementById('name1statusHard').textContent = '';
+userName.value = ' ';
+
+
+
+
+
 });
 const playAgainButton = document.getElementById('playAgainButton');
 playAgainButton.addEventListener('click', () => {
@@ -67,22 +94,30 @@ startGame.style.display = 'grid';
 });
 const harderLevelButton = document.getElementById('harderLevelButton');
 harderLevelButton.addEventListener('click', () => {
+    document.getElementById('name1statusHard').textContent = "Playing hard now";
 level.style.display = 'none';
 hard.style.display = 'grid';
+setTimeout(function() {
+    hard.style.display = 'none';
+    replay.style.display = 'grid'; 
+    document.getElementById('name1statusHard').textContent = `Top Hard: ${clickButtonResultHard}`;
+    document.getElementById('totalClicks').textContent = clickButtonResultHard;
+    clickButtonResultHard = 0;
+    }, 10000);
+    
+    
 });
 const gameButtonHard = document.getElementById('gameButtonHard');
 gameButtonHard.addEventListener('click', () => {
-    setTimeout(function() {
-    hard.style.display = 'none';
-    replay.style.display = 'grid'; 
-    }, 10000);
-    //set random
+    clickButtonResultHard++;
+    
 });
 const userName = document.getElementById('username');
 function validateUsername(){
     
     if (userName.value.length >= 4) {
-        userName.style.border = '0px';
+        userName.style.border = '2px solid black';
+        document.getElementById('name1statusEasy').textContent = "Playing now";
         return true;
       } else {
         userName.style.border = '2px solid red';
