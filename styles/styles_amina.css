@@ -1,0 +1,27 @@
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.container {
+    float: right;
+    width: 250px;
+    margin-top: 100px;
+}
+
+.startBtn, .stopBtn {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+.stopBtn {
+    display:none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 5px;
+}
