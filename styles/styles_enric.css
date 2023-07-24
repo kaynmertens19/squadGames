@@ -31,26 +31,14 @@ body {
     background-color: bisque;
 }
 
-@import url(./enricFormStyle.css);
-
 
 .formContainer {
-    
-    display: none;
-    font-family: 'Montserrat';
-    width: 70%;
-    /* height: 905px; */
-    /* margin-left: 125px; */
-    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   
-    background-color: #e4e9f6;
-    border-radius: 5px;
-    color: #090d1b;
-  
-    flex: 1;
-    transition: flex .8s cubic-bezier(0.25, 0.4, 0.45, 1.4);
-  
-  }
+}
+
 
 /* Estilos para los campos de formulario seleccionados */
 .formContainer input:focus,
@@ -98,9 +86,6 @@ body {
 .formContainer textarea.error+.error-message {
   margin-top: 0;
 }
-
-
-
 
 
 /* Estilos para los mensajes de error */

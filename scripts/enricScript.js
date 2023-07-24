@@ -76,9 +76,10 @@ hangmanGame__Game__initPageButton.addEventListener('click', () => {
 })
 
 /* user input validate */
-// let isValidUser = validateUser()
+const username = document.getElementById('username');
+const hangmanGame__Game__userNameTitle = document.querySelector('.hangmanGame__Game__userNameTitle')
+let userName;
 function validateUser() {
-    const username = document.getElementById('username');
     let isValid = true;
 
     if (username.value.trim() === '') {
@@ -91,11 +92,14 @@ function validateUser() {
         console.log(" Username should not contain spaces.")
 
       } else if (username.value.length < 5 || username.value.length > 20) {
-        displayError(username, 'Username should be between 5 and 20 characters.');
+        displayError(username, 'Username should be between 3 and 20 characters.');
         isValid = false;
-        console.log(" Username should be between 5 and 20 characters.")
+        console.log(" Username should be between 3 and 20 characters.")
 
       } else {
+        userName = username.value
+        hangmanGame__Game__userNameTitle.innerText = userName
+        console.log(userName)
         hideError(username);
       }
 
@@ -117,7 +121,7 @@ function hideError(element) {
 
 
 
-/* PLAY */
+/* GAME - init */
 
 const hangmanGame__Game__initGameButton = document.querySelector('.hangmanGame__Game__initGameButton')
 const wordLettersList = document.getElementById('wordLettersList')
@@ -128,10 +132,14 @@ let wordArray = ['h','e', 'l', 'l', 'o']
 hangmanGame__Game__initGameButton.addEventListener('click', () => {
     startGame()
 })
+function startGame() {
+    selectWord()
+    addWord()
+}
 
 function selectWord() {
     const index = Math.floor(Math.random() * playingWords.length);
-    const selectedWord = playingWords[index]
+    const selectedWord = playingWords[index].toUpperCase()
     const stringArray = selectedWord.split('')
     wordArray = stringArray
 }
@@ -142,6 +150,7 @@ function addWord() {
     const wordLength = wordArray.length
     for(let i = 0; i<wordLength; i++){
         const letterNode = document.createElement("li");
+        letterNode.classList.add('noneLetter')
         const letterTextnode = document.createTextNode(wordArray[i]);
         letterNode.appendChild(letterTextnode);
         wordLettersList.appendChild(letterNode);
@@ -154,8 +163,51 @@ function clearWord() {
       }
 }
 
-function startGame() {
-    selectWord()
-    addWord()
+
+
+/* GAME - play */
+
+let selectedLetter;
+const hangmanGame__Game__introLetterButton = document.querySelector('.hangmanGame__Game__introLetterButton')
+const input__selectedLetter = document.getElementById('letter')
+
+hangmanGame__Game__introLetterButton.addEventListener('click', () => {
+
+    if (chooseLetter() ) {
+        console.log("is valid letter")
+       
+    } else {
+        console.log("invalid letter")
+    }
+
+    console.log(selectedLetter)
+
+})
+
+function chooseLetter() {
+    let isValid = true;
+
+    if (input__selectedLetter.value.trim() === '') {
+        displayError(input__selectedLetter, 'one uppercase letter is required.');
+        isValid = false;
+        selectedLetter = input__selectedLetter.value     
+    } else if (!isValidLetter(input__selectedLetter.value.trim())) {
+        displayError(input__selectedLetter, 'Choose one uppercase letter please.');
+        isValid = false;
+        selectedLetter = input__selectedLetter.value
+    } else {
+        hideError(input__selectedLetter);
+        hangmanGame__Game__introLetterButton.style.backgroundColor = 'green'
+        selectedLetter = input__selectedLetter.value
+    }
+    
+
+     return isValid;
+
 }
 
+// Función auxiliar para validar la fortaleza de la contraseña
+function isValidLetter(selectedLetter) {
+    const passwordRegex = /^[A-Z]+$/;
+    return passwordRegex.test(selectedLetter);
+  }
