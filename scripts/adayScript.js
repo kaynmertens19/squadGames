@@ -4,12 +4,12 @@
 
 
 
-const hangmanGame__button = document.querySelector('.hangmanGame__button')
+// const hangmanGame__button = document.querySelector('.hangmanGame__button')
 
 
-hangmanGame__button.addEventListener('click', () => {
-    hangmanGame__button.style.backgroundColor = 'red'
-})
+// hangmanGame__button.addEventListener('click', () => {
+//     hangmanGame__button.style.backgroundColor = 'red'
+// })
 
 
 let buttonUsername = document.getElementById("buttonUser");
@@ -20,6 +20,32 @@ let timeLeft = 10;
 let tittle = document.getElementById("tittle");
 let formDiv = document.getElementById("form_game");
 let game = document.getElementById("button_game");
+
+let finalTitle = document.getElementById("final_part-tittle");
+let finalParagraph  = document.getElementById("final_part-paragraph");
+let finalSecondTitle = document.getElementById("final_part-secondTittle");
+let finalButton = document.getElementById("final_part-button");
+
+
+
+finalButton.addEventListener("click", () => {
+  formDiv.classList.add("display_flex");
+  tittle.classList.add("display_block");
+  formDiv.classList.remove("display_none");
+  tittle.classList.remove("display_none");
+  game.classList.remove("display_block");
+  finalButton.classList.add("display_none");
+  finalTitle.classList.add("display_none");
+  finalParagraph.classList.add("display_none");
+  finalSecondTitle.classList.add("display_none")
+  finalButton.classList.remove("display_block");
+  finalTitle.classList.remove("display_block");
+  finalParagraph.classList.remove("display_block");
+  finalSecondTitle.classList.remove("display_block")
+});
+
+
+
 
 
 // Función para agregar un nuevo usuario al array y almacenar en localStorage
@@ -61,27 +87,52 @@ function agregarUsuario() {
     formDiv.classList.add("display_none");
     tittle.classList.add("display_none");
     game.classList.add("display_block");
+    game.classList.remove("display_none");
+    finalButton.classList.add("display_none");
+    finalTitle.classList.add("display_none");
+    finalParagraph.classList.add("display_none");
+    finalSecondTitle.classList.add("display_none")
+    finalButton.classList.remove("display_block");
+    finalTitle.classList.remove("display_block");
+    finalParagraph.classList.remove("display_block");
+    finalSecondTitle.classList.remove("display_block")
+
   }
 
   function endGame(){
+    let scorePrinted = document.getElementById("scoresito");
     let div = document.getElementById('div_created');
     clearInterval(timer);
-    alert("Game ended! Your score is " + score)
+    scorePrinted.textContent = score;
     const puntuacion = document.createElement("p");
     localStorage.setItem("score", score);
     let scoreDefinitivo = localStorage.getItem("score");
     puntuacion.textContent = scoreDefinitivo;
     div.appendChild(puntuacion);
-    formDiv.classList.add("display_flex");
-    tittle.classList.add("display_block");
-    formDiv.classList.remove("display_none");
-    tittle.classList.remove("display_none");
     game.classList.remove("display_block");
+    game.classList.add("display_none");
+    finalButton.classList.remove("display_none");
+    finalTitle.classList.remove("display_none");
+    finalParagraph.classList.remove("display_none");
+    finalSecondTitle.classList.remove("display_none")
+    finalButton.classList.add("display_block");
+    finalTitle.classList.add("display_block");
+    finalParagraph.classList.add("display_block");
+    finalSecondTitle.classList.add("display_block")
   }
 
   game.addEventListener("click", () =>{
     score++;
-    
+    const boxWidth = Math.floor(Math.random() * 100) +50
+    const boxHeight = Math.floor(Math.random() * 100) +50
+    const maxX = window.innerWidth - boxWidth
+    const maxY = window.innerHeight - boxHeight
+    const randomX =  Math.floor(Math.random() * maxX)
+    const randomY = Math.floor(Math.random() * maxY)
+    game.style.width = boxWidth + "px";
+    game.style.height = boxHeight + "px";
+    game.style.top = randomY + "px";
+    game.style.left = randomX + "px";
   })
 
 

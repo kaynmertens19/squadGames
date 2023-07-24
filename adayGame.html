@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="styles\styles_aday.css">
     <title>Document</title>
 </head>
 
@@ -22,6 +21,13 @@
                     <input onclick="agregarUsuario()" class="input_username_button" type="button" id="buttonUser" value="Start">
                 </form>
                 <button id="button_game"  class="game_button display_none">Click ¡ME!</button>
+
+                <div class="final_div">
+                    <h2 class="adayFinal_tittle display_none" id="final_part-tittle">Your score</h2>
+                    <p class="adayFinal_paragraph display_none" id="final_part-paragraph">Your 10 seconds are done</p>
+                    <h2 class="adayFinal_secondTittle display_none" id="final_part-secondTittle">You have made <span id="scoresito"></span> clicks!</h2>
+                    <button class="adayFinal_button display_none" id="final_part-button">Play again</button>
+                </div>
             </div>
         </div>
 
@@ -38,7 +44,7 @@
     </main>
 
 
-    <script src="js/index.js"></script>
+    <script src="scripts/adayScript.js"></script>
 </body>
 
 </html>
