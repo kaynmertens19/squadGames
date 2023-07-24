@@ -30,8 +30,10 @@ mainPage.style.display = 'none';
 
 const playingButton = document.getElementById('playingButton');
 playingButton.addEventListener('click', () => {
-initialFrame.style.display = 'none';
-startGame.style.display = 'grid';
+    if (validateUsername() === true){
+    initialFrame.style.display = 'none';
+    startGame.style.display = 'grid';
+    }
 });
 const startingButton = document.getElementById('startingButton');
 startingButton.addEventListener('click', () => {
@@ -74,3 +76,14 @@ gameButtonHard.addEventListener('click', () => {
     }, 10000);
     //set random
 });
+
+function validateUsername(){
+    const userName = document.getElementById('username');
+    if (userName.value.length >= 4) {
+        userName.style.border = '0px';
+        return true;
+      } else {
+        userName.style.border = '2px solid red';
+        return false;
+      }
+}
