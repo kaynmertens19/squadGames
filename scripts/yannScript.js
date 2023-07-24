@@ -20,7 +20,6 @@ game.style.display = 'none';
 replay.style.display = 'none'; 
 level.style.display = 'none';
 hard.style.display = 'none';
-
 const tenClick__button = document.querySelector('.tenClickGame__button');
 tenClick__button.addEventListener('click', () => {
 juego1.style.display = 'block';
@@ -34,6 +33,10 @@ playingButton.addEventListener('click', () => {
     initialFrame.style.display = 'none';
     startGame.style.display = 'grid';
     }
+    const player = {
+        name: `${userName.value}`
+    }
+    console.log(player.name);
 });
 const startingButton = document.getElementById('startingButton');
 startingButton.addEventListener('click', () => {
@@ -47,7 +50,6 @@ game.style.display = 'grid';
 const gameButton = document.getElementById('gameButton');
 gameButton.addEventListener('click', () => {
 });
-
 const backHomeButton = document.getElementById('backHomeButton');
 backHomeButton.addEventListener('click', () => {
 replay.style.display = 'none'; 
@@ -76,9 +78,9 @@ gameButtonHard.addEventListener('click', () => {
     }, 10000);
     //set random
 });
-
+const userName = document.getElementById('username');
 function validateUsername(){
-    const userName = document.getElementById('username');
+    
     if (userName.value.length >= 4) {
         userName.style.border = '0px';
         return true;
