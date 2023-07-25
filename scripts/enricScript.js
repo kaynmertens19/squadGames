@@ -20,6 +20,13 @@ const hangmanGame__Game__Container = document.querySelector('hangmanGame__Game__
 const hangmanGame__Game__chooseLeterContainer = document.querySelector('.hangmanGame__Game__chooseLeterContainer')
 const hangmanGame__Game__scoreButton = document.querySelector('.hangmanGame__Game__scoreButton')
 const hangmanGame__Game__image = document.querySelector('.hangmanGame__Game__image')
+const hangmanImage_1 = document.querySelector('.hangmanImage_1')
+const hangmanImage_2 = document.querySelector('.hangmanImage_2')
+const hangmanImage_3 = document.querySelector('.hangmanImage_3')
+const hangmanImage_4 = document.querySelector('.hangmanImage_4')
+const hangmanImage_5 = document.querySelector('.hangmanImage_5')
+const hangmanImage_6 = document.querySelector('.hangmanImage_6')
+const hangmanImage_7 = document.querySelector('.hangmanImage_7')
 
 /* SCORE PAGE */
 const hangmanGame__Score = document.querySelector('.hangmanGame__Score')
@@ -41,7 +48,7 @@ function openGame() {
     hangmanGame__container.style.display = 'flex'
     hangmanGame__Main.style.display = 'flex'
     hangmanGame__selectGameButton.style.backgroundColor = 'red'
-    hangmanGame__Game__image.style.backgroundImage = image_hagman_1
+    // hangmanGame__Game__image.src = new URL(/src/memoryGame/hangman_1)
 }
 
 hangmanGame__Main__initPageButton.addEventListener('click', () => {
@@ -132,6 +139,7 @@ function hideError(element) {
   // show scores page
   hangmanGame__Game__scoreButton.addEventListener('click', () => {
     hangmanGame__Score.style.display = 'flex'
+    addResults()
   })
 
 
@@ -201,13 +209,14 @@ function clearWord() {
 
 let selectedLetter;
 let attemps = [];
-let playerLifes = 7;
-const lifeImages = [image_hagman_1, image_hagman_2]
+let playerLifes = 6;
 
-const image_hagman_1 = new Image
-image_hagman_1.src = "hangman_1"
-const image_hagman_2 = new Image
-image_hagman_2.src = "hangman_2"
+// const image_hagman_1 = new Image(100, 200)
+// image_hagman_1.src = "hangman_1"
+// const image_hagman_2 = new Image
+// image_hagman_2.src = "hangman_2"
+// let lifeImages = [image_hagman_1, image_hagman_2]
+
 
 const hangmanGame__Game__introLetterButton = document.querySelector('.hangmanGame__Game__introLetterButton')
 const input__selectedLetter = document.getElementById('letter')
@@ -220,23 +229,24 @@ hangmanGame__Game__introLetterButton.addEventListener('click', () => {
         if (isLetterMatch()) {
             console.log("your letter is in word")
             doMatch()
+            input__selectedLetter.value = ''
         } else {
             looselife()
             console.log("your letter isn't in word - loose life")
+            input__selectedLetter.value = ''
         }
        
         console.log("is valid letter")
+        input__selectedLetter.value = ''
         return true
     } else {
       
         // list letter selected - try again - loose life
         console.log("invalid letter")
+        input__selectedLetter.value = ''
         return false
     }
 
-
-  
-    input__selectedLetter.value = ''
 })
 
 function isLetterMatch() {
@@ -328,7 +338,31 @@ function looselife() {
         playerLifesTitle.innerText = 'You are death'
         hangmanGame__Game__introLetterButton.disabled = true
     }
+    changeHangmanImage(playerLifes)
 
+}
+function changeHangmanImage(lifes) {
+    if (lifes === 6) {
+        hangmanGame__Game__image.classList.add(hangmanImage_1)
+    } else if (lifes === 5) {
+        hangmanGame__Game__image.classList.remove(hangmanImage_1)
+        hangmanGame__Game__image.classList.add(hangmanImage_2)
+    } else if (lifes === 4) {
+        hangmanGame__Game__image.classList.remove(hangmanImage_2)
+        hangmanGame__Game__image.classList.add(hangmanImage_3)
+    } else if (lifes === 3) {
+        hangmanGame__Game__image.classList.remove(hangmanImage_3)
+        hangmanGame__Game__image.classList.add(hangmanImage_4)
+    } else if (lifes === 2) {
+        hangmanGame__Game__image.classList.remove(hangmanImage_4)
+        hangmanGame__Game__image.classList.add(hangmanImage_5)
+    } else if (lifes === 1) {
+        hangmanGame__Game__image.classList.remove(hangmanImage_5)
+        hangmanGame__Game__image.classList.add(hangmanImage_6)
+    } else if (lifes === 0) {
+        hangmanGame__Game__image.classList.remove(hangmanImage_6)
+        hangmanGame__Game__image.classList.add(hangmanImage_7)
+    }
 }
 
 
@@ -347,23 +381,51 @@ function isGameEnd(length) {
 hangmanGame__Score__closeButton.addEventListener('click', () => {
     hangmanGame__Score__closeButton.style.backgroundColor = 'red'
     hangmanGame__Score.style.display = 'none'
-
-    
 })
-
-function addResult() {
-
-}
 
 
 hangmanGame__Game__winButton.addEventListener('click', () => {
     hangmanGame__Score__winPage.style.display = 'none'
+    safeUserScore(userName, playerLifes)
 })
 
 /* DATA USERS-RESULTS */
 
 
-let user = {
-    "userName": userName,
-    "score": [playerLifes]
+
+let scores =[]
+let scoresInLocalStorage = localStorage.setItem('scores', scores)
+
+function addResults() {
+    let silc = localStorage.getItem('scores')
+    for(let score of scores) {
+        const scoreNode = document.createElement("li");
+        const scoreTextnode = document.createTextNode(JSON.stringify(score.userName+": "+score.lifes));
+        scoreNode.appendChild(scoreTextnode);
+        hangmanGame__Score__list.appendChild(scoreNode);
+    }
+
+    console.log('localStorage: ' + silc)
 }
+
+function safeUserScore(userName, playerLifes) {
+    let userScore = {
+        "userName": userName,
+        "lifes": playerLifes
+    }
+    scores.push(userScore)
+     localStorage.setItem("scores", scores)
+    // scoresInLocalStorage = localStorage.setItem('scores', scores)
+    console.log('score: ' +JSON.stringify(scores))
+    // addResultsToList(userScore)
+}
+
+
+// function addResultsToList(score) {
+  
+//         const scoreNode = document.createElement("li");
+//         const scoreTextnode = document.createTextNode(JSON.stringify(score.userName+": "+score.lifes));
+//         scoreNode.appendChild(scoreTextnode);
+//         hangmanGame__Score__list.appendChild(scoreNode);
+    
+// }

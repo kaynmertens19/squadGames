@@ -27,10 +27,10 @@
 
     <!-- Enric game -->
     <button class="hangmanGame__selectGameButton">hangmanGame</button>
-    <section class="hangmanGame__container">Juego 4: HangMan Game
+    <section class="hangmanGame__container">
             
             <main class="hangmanGame__Main">
-                <h1>HangMan Game</h1>
+                <h1>Juego 4: HangMan Game</h1>
                 <!-- <input class="hangmanGame__Main__inputUser"/> -->
                 <div class="formContainer">
                     <form id="profileForm" >
@@ -42,15 +42,26 @@
                 <button class="hangmanGame__Main__playButton button"> PLAY</button>
                 <button class="hangmanGame__Main__initPageButton button"> Go to select Game</button>
                 <button class="hangmanGame__Game__scoreButton button"> Best scores</button>
+
+                <section class="hangmanGame__Score">
+                    <article class="hangmanGame__Score__container">
+                        <h1>BEST SCORES</h1>
+                        <ul class="hangmanGame__Score__list"> 
+                            <li>hello world</li>
+                            <li>hello world</li>
+                            <li>hello world</li>
+                            <li>hello world</li>
+                            <li>hello world</li>
+                            <li>hello world</li>
+                       
+                        </ul>
+                    </article>
+                    <button class="hangmanGame__Score__closeButton button">Close</button>
+                </section>
+    
             </main>
 
-            <section class="hangmanGame__Score">
-                <article class="hangmanGame__Score__container">
-                    <ul class="hangmanGame__Score__list">
-                    </ul>
-                </article>
-            </section>
-
+            
             <article class="hangmanGame__Game">
                 <h1>HangMan Game</h1>
                 <h2 class="hangmanGame__Game__userNameTitle"></h2>
@@ -61,22 +72,33 @@
                         <input type="text" id="letter" name="letter" minlength="1" maxlength="1" required>
                         <p id="letterError" class="error-message"></p>
                     </form>
-                    <button class="hangmanGame__Game__introLetterButton button"> ok</button>
+                    <button class="hangmanGame__Game__introLetterButton button"> OK</button>
 
                 </div>
-                <div class="hangmanGame__Game__Container">game container
+                <div class="hangmanGame__Game__Container">
                     <ul id="wordLettersList">
                         
                     </ul>
-                    <h2 class="letterAttempsTitle">attempts</h2>
-                    <h2 class="playerLifesTitle">player lifes</h2>
+                    <h2 class="letterAttempsTitle"></h2>
+                    <h2 class="playerLifesTitle"></h2>
                 </div>
-              
+
+                <img class="hangmanGame__Game__image"/>
+
 
                 <button class="hangmanGame__Game__initGameButton  button">new word</button>
                 <br>
                 <button class="hangmanGame__Game__backButton button ">BACK</button>
                 <button class="hangmanGame__Game__initPageButton button"> Select Game</button>
+
+                <section class="hangmanGame__Score hangmanGame__Score__winPage">
+                    <article class="hangmanGame__Score__container">
+                        <h1>YOU WIN!</h1>
+                        <button class="hangmanGame__Game__winButton button"> Save result</button>
+                    </article>
+                </section>
+
+
             </article>
 
     </section>
