@@ -42,6 +42,7 @@ const currentPlayer = {
     scoreEasy: '',
     scoreHard: ''
 }
+
 const Player2 = {
     name: '',
     scoreEasy: '',
@@ -73,6 +74,7 @@ playingButton.addEventListener('click', () => {
     }
     currentPlayer.name = userName.value
     name1.textContent = currentPlayer.name;
+    localStorage.setItem("currentPlayername", currentPlayer.name);
     
 });
 const startingButton = document.getElementById('startingButton');
@@ -97,31 +99,34 @@ const backHomeButton = document.getElementById('backHomeButton');
 backHomeButton.addEventListener('click', () => {
 replay.style.display = 'none'; 
 initialFrame.style.display = 'grid';
-
-document.getElementById('name2').textContent = currentPlayer.name;
-document.getElementById('name2statusEasy').textContent = currentPlayer.scoreEasy;
-document.getElementById('name2statusHard').textContent = currentPlayer.scoreHard;
 name1.textContent = 'Selecting user...';
+localStorage.setItem("Player2Name", Player2.name);
+localStorage.setItem("Player2Easy", Player2.scoreEasy);
+localStorage.setItem("Player2Hard", Player2.scoreHard)
+
 name1statusEasy.textContent = '';
 name1statusHard.textContent = '';
 userName.value = ' ';
 console.log(currentPlayer);
-
-
-
-
 });
+
 const playAgainButton = document.getElementById('playAgainButton');
 playAgainButton.addEventListener('click', () => {
+    // if diferencia de valor easy
+    localStorage.setItem("currentPlayerEasy", currentPlayer.scoreEasy);
+    // if diferencia de valor hard
+    localStorage.setItem("currentPlayerHard", currentPlayer.scoreHard);
 replay.style.display = 'none'; 
 level.style.display = 'grid';
 });
+
 const sameLevelButton = document.getElementById('sameLevelButton');
 sameLevelButton.addEventListener('click', () => {
     name1statusEasy.textContent = "Playing Easy again";
 level.style.display = 'none';
 startGame.style.display = 'grid';
 });
+
 const harderLevelButton = document.getElementById('harderLevelButton');
 harderLevelButton.addEventListener('click', () => {
     name1statusHard.textContent = "Playing Hard now";
@@ -131,6 +136,7 @@ harderLevelButton.addEventListener('click', () => {
     hard.style.display = 'none';
     replay.style.display = 'grid';
     name1statusHard.textContent = clickButtonResultHard;
+    currentPlayer.scoreHard = clickButtonResultHard;
     document.getElementById('totalClicks').textContent = clickButtonResultHard;
     clickButtonResultHard = 0;
     }, 10000);
@@ -142,6 +148,7 @@ gameButtonHard.addEventListener('click', () => {
     clickButtonResultHard++;
     motion();
 });
+
 const userName = document.getElementById('username');
 function validateUsername(){
     
