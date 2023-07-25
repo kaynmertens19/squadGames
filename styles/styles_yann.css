@@ -253,9 +253,14 @@
     text-align:start;
 }
 .currentStatus{
-    font-style: italic;
+   font-style: italic;
 }
+.currentStatusHard{
+    font-style: italic;
+    color: red;
+    
 
+}
 /* media media media media media media media media media media media */
 
 @media (min-width: 840px){
@@ -324,7 +329,8 @@
 .name{
     font-size: 2rem;
 }
-.currentStatus{
+.currentStatus,
+.currentStatusHard{
     font-size: 1.5rem;
 }
 
