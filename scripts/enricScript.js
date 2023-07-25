@@ -18,6 +18,17 @@ const hangmanGame__Game__backButton = document.querySelector('.hangmanGame__Game
 const hangmanGame__Game__initPageButton = document.querySelector('.hangmanGame__Game__initPageButton')
 const hangmanGame__Game__Container = document.querySelector('hangmanGame__Game__Container')
 const hangmanGame__Game__chooseLeterContainer = document.querySelector('.hangmanGame__Game__chooseLeterContainer')
+const hangmanGame__Game__scoreButton = document.querySelector('.hangmanGame__Game__scoreButton')
+const hangmanGame__Game__image = document.querySelector('.hangmanGame__Game__image')
+
+/* SCORE PAGE */
+const hangmanGame__Score = document.querySelector('.hangmanGame__Score')
+const hangmanGame__Score__list = document.querySelector('.hangmanGame__Score__list')
+const hangmanGame__Score__closeButton = document.querySelector('.hangmanGame__Score__closeButton') 
+
+/* WIN PAGE */
+const hangmanGame__Score__winPage = document.querySelector('.hangmanGame__Score__winPage')
+const hangmanGame__Game__winButton = document.querySelector('.hangmanGame__Game__winButton')
 
 /* NAVIGATION */
 /** main page **/  
@@ -30,6 +41,7 @@ function openGame() {
     hangmanGame__container.style.display = 'flex'
     hangmanGame__Main.style.display = 'flex'
     hangmanGame__selectGameButton.style.backgroundColor = 'red'
+    hangmanGame__Game__image.style.backgroundImage = image_hagman_1
 }
 
 hangmanGame__Main__initPageButton.addEventListener('click', () => {
@@ -39,7 +51,6 @@ function goMainPage() {
     hangmanGame__container.style.display = 'none'
     mainPage.style.display = 'flex'
 
-    hangmanGame__selectGameButton.style.backgroundColor = 'green'
 }
 
 
@@ -55,7 +66,6 @@ hangmanGame__Main__playButton.addEventListener('click', () => {
 })
 function playGame() {
     
-    hangmanGame__Main__playButton.style.backgroundColor = 'green'
     hangmanGame__Game.style.display = 'flex'
     hangmanGame__Main.style.display = 'none'
 }
@@ -119,7 +129,10 @@ function hideError(element) {
     errorElement.style.display = 'none';
   }
   
-
+  // show scores page
+  hangmanGame__Game__scoreButton.addEventListener('click', () => {
+    hangmanGame__Score.style.display = 'flex'
+  })
 
 
 /* GAME - init */
@@ -147,7 +160,11 @@ function resetGame() {
     selectedLetter;
    
     attemps = [];
-    playerLifes = 5;
+    playerLifes = 7;
+
+
+    hangmanGame__Game.style.backgroundColor = 'lightsalmon'
+
 }
 
 function selectWord() {
@@ -184,7 +201,13 @@ function clearWord() {
 
 let selectedLetter;
 let attemps = [];
-let playerLifes = 5;
+let playerLifes = 7;
+const lifeImages = [image_hagman_1, image_hagman_2]
+
+const image_hagman_1 = new Image
+image_hagman_1.src = "hangman_1"
+const image_hagman_2 = new Image
+image_hagman_2.src = "hangman_2"
 
 const hangmanGame__Game__introLetterButton = document.querySelector('.hangmanGame__Game__introLetterButton')
 const input__selectedLetter = document.getElementById('letter')
@@ -192,8 +215,6 @@ const letterAttempsTitle =  document.querySelector('.letterAttempsTitle')
 const playerLifesTitle = document.querySelector('.playerLifesTitle')
 
 hangmanGame__Game__introLetterButton.addEventListener('click', () => {
-
-
 
     if (isChoosenLetterValid() ) {
         if (isLetterMatch()) {
@@ -275,7 +296,7 @@ function isSecondAttempt(letter) {
 
 function scoreTry() {
     attemps.push(input__selectedLetter.value)
-//     letterAtempsTitle.innerText = letterAtempsTitle.innerText+' - '+input__selectedLetter.value
+
     letterAttempsTitle.innerText = 'Attemps: ' +attemps
     console.log(letterAttempsTitle.innerText)
    
@@ -312,12 +333,37 @@ function looselife() {
 
 
 
-
-
 function isGameEnd(length) {
     if (validLetters === length) {
         hangmanGame__Game.style.backgroundColor = 'green'
         console.log('WIN!!')
+        hangmanGame__Score__winPage.style.display = 'flex'
+        hangmanGame__Game__introLetterButton.disabled = true
     }
 }
 
+
+/* GAME - SCORES */
+hangmanGame__Score__closeButton.addEventListener('click', () => {
+    hangmanGame__Score__closeButton.style.backgroundColor = 'red'
+    hangmanGame__Score.style.display = 'none'
+
+    
+})
+
+function addResult() {
+
+}
+
+
+hangmanGame__Game__winButton.addEventListener('click', () => {
+    hangmanGame__Score__winPage.style.display = 'none'
+})
+
+/* DATA USERS-RESULTS */
+
+
+let user = {
+    "userName": userName,
+    "score": [playerLifes]
+}

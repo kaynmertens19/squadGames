@@ -99,7 +99,7 @@ body {
 
 /* GAME */
 .hangmanGame__Game {
-    display: flex;
+    display: none;
     flex-direction: column;
     height: 100vh;
     background-color: lightsalmon;
@@ -115,7 +115,6 @@ body {
 
 .hangmanGame__Game__Container {
     /* display: none; */
-    background-color: antiquewhite;
     height: 20rem;
 }
 .hangmanGame__Game__chooseLeterContainer {
@@ -126,7 +125,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: aliceblue;
 
 }
 
@@ -148,3 +146,50 @@ body {
 
 }
 
+/* Best scores */
+
+.hangmanGame__Score {
+    position: absolute;
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgba(0, 0, 0, 0.76);
+    
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+.hangmanGame__Score__container {
+    height: 70%;
+    width: 80%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 2rem;
+    overflow: scroll;
+
+    background-color: white;
+
+}
+
+.hangmanGame__Score__list {
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
+.hangmanGame__Score__list li {
+    padding: 0.5rem;
+
+}
+
+
+.hangmanGame__Score__closeButton {
+    margin: 1rem;
+}
+
+
+
+.hangmanGame__Game__image {
+    background-image: url(../srcs/memoryGame/hagman_1.png);
+}
