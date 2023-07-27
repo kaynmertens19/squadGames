@@ -1,6 +1,4 @@
-*{
-   
-}
+
 
 body {
     background-color: lightblue;
@@ -18,9 +16,11 @@ body {
 
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     background-color: lightseagreen;
-    height: 100;
+    height: 100vh;
     width: 100%;
 
     text-align: center;
@@ -31,13 +31,17 @@ body {
 .button {
     width: 15rem;
     height: 3rem;
-    padding: 0.5rem;
+    margin: 0.5rem;
 }
 
 .hangmanGame__Main {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     height: 100vh;
+    width: 100%;
     background-color: bisque;
 }
 
@@ -113,33 +117,39 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: lightsalmon;
+    height: 100%;
+    width: 100%;
+    /* background-color: lightsalmon; */
 }
 
 .hangmanGame__Game h1 {
-    background-color: red;
+    font-size: 4rem;
 }
 
 .hangmanGame__Game h2 {
+    font-size: 3rem;
+    margin: 1rem;
     color: green
 }
 
-
-/* .hangmanGame__Game__Container {
-    display: none; 
-    height: 20rem; 
-} */
 
 .hangmanGame__Game__chooseLeterContainer {
     display: none;
 }
 
+.hangmanGame__Game__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+
 .hangmanGame__Game__Container ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
-
+    max-width: 100%;
 }
 
 .noneLetter {
@@ -148,6 +158,7 @@ body {
     padding: 1rem;
     background-color: red;
     font-size: 0;
+
 }
 
 
@@ -202,53 +213,16 @@ body {
     margin: 1rem;
 }
 
+.hangmanGame__Game__imageContainer {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0px 0px 10px 8px rgba(0,0,0,0.7);
+}
 
 .hangmanGame__Game__image {
     height: 10rem;
     width: 6rem;
-    margin: 2rem;
-    
-}
-.hangmanImage_1 {
-   
-    /* background-image: url(../srcs/memoryGame/hagman_1.png); */
-    background-repeat: none;
-    background-size: cover;
-}
-
-.hangmanImage_2 {
   
-    background-image: url(../srcs/memoryGame/hagman_2.png);
-    background-repeat: none;
-    background-size: cover;
-}
-.hangmanImage_3 {
- 
-    background-image: url(../srcs/memoryGame/hagman_3.png);
-    background-repeat: none;
-    background-size: cover;
-}
-.hangmanImage_4 {
-   
-    background-image: url(../srcs/memoryGame/hagman_4.png);
-    background-repeat: none;
-    background-size: cover;
-}
-.hangmanImage_5 {
-   
-    background-image: url(../srcs/memoryGame/hagman_5.png);
-    background-repeat: none;
-    background-size: cover;
-}
-.hangmanImage_6 {
-   
-    background-image: url(../srcs/memoryGame/hagman_6.png);
-    background-repeat: none;
-    background-size: cover;
-}
-.hangmanImage_7 {
-
-    background-image: url(../srcs/memoryGame/hagman_7.png);
-    background-repeat: none;
-    background-size: cover;
 }

@@ -41,13 +41,11 @@ const hangmanGame__Game__winButton = document.querySelector('.hangmanGame__Game_
 /** main page **/  
 hangmanGame__selectGameButton.addEventListener('click', () => {
     openGame()
-    console.log('hangman game selected')
 })
 function openGame() {
     mainPage.style.display = 'none'
     hangmanGame__container.style.display = 'flex'
     hangmanGame__Main.style.display = 'flex'
-    hangmanGame__selectGameButton.style.backgroundColor = 'red'
     // hangmanGame__Game__image.src = new URL(/src/memoryGame/hangman_1)
 }
 
@@ -64,12 +62,8 @@ function goMainPage() {
 hangmanGame__Main__playButton.addEventListener('click', () => {
 
     if (validateUser()) {
-        console.log("is valid user")
         playGame()
-    } else {
-        console.log("invalid user")
     }
-
 })
 function playGame() {
     
@@ -103,21 +97,17 @@ function validateUser() {
     if (username.value.trim() === '') {
         displayError(username, 'Username is required.');
         isValid = false;
-        console.log("no user name")
       } else if (username.value.trim().includes(' ')) {
         displayError(username, 'Username should not contain spaces.');
         isValid = false;
-        console.log(" Username should not contain spaces.")
 
       } else if (username.value.length < 3 || username.value.length > 20) {
         displayError(username, 'Username should be between 3 and 20 characters.');
         isValid = false;
-        console.log(" Username should be between 3 and 20 characters.")
 
       } else {
         userName = username.value
         hangmanGame__Game__userNameTitle.innerText = userName
-        console.log(userName)
         hideError(username);
       }
 
@@ -147,7 +137,8 @@ function hideError(element) {
 
 const hangmanGame__Game__initGameButton = document.querySelector('.hangmanGame__Game__initGameButton')
 const wordLettersList = document.getElementById('wordLettersList')
-const playingWords = ['Apple', 'Banana', 'Apricot', 'Olive', 'Oranges',	'Ramphal', 'Papaya', 'Peach', 'Pomegranate', 'Pineapple', 'Rambutan', 'Raspberries', 'Strawberries','Starfruit',]
+const playingWords = ['A']
+// ['Apple', 'Banana', 'Apricot', 'Olive', 'Oranges',	'Ramphal', 'Papaya', 'Peach', 'Pomegranate', 'Pineapple', 'Rambutan', 'Raspberries', 'Strawberries','Starfruit',]
 let wordArray;
 
 
@@ -168,11 +159,7 @@ function resetGame() {
     selectedLetter;
    
     attemps = [];
-    playerLifes = 7;
-
-
-    hangmanGame__Game.style.backgroundColor = 'lightsalmon'
-
+    playerLifes = initialLifes;
 }
 
 function selectWord() {
@@ -209,14 +196,8 @@ function clearWord() {
 
 let selectedLetter;
 let attemps = [];
-let playerLifes = 6;
-
-// const image_hagman_1 = new Image(100, 200)
-// image_hagman_1.src = "hangman_1"
-// const image_hagman_2 = new Image
-// image_hagman_2.src = "hangman_2"
-// let lifeImages = [image_hagman_1, image_hagman_2]
-
+const initialLifes = 6
+let playerLifes = initialLifes;
 
 const hangmanGame__Game__introLetterButton = document.querySelector('.hangmanGame__Game__introLetterButton')
 const input__selectedLetter = document.getElementById('letter')
@@ -227,22 +208,18 @@ hangmanGame__Game__introLetterButton.addEventListener('click', () => {
 
     if (isChoosenLetterValid() ) {
         if (isLetterMatch()) {
-            console.log("your letter is in word")
             doMatch()
             input__selectedLetter.value = ''
         } else {
             looselife()
-            console.log("your letter isn't in word - loose life")
             input__selectedLetter.value = ''
         }
        
-        console.log("is valid letter")
         input__selectedLetter.value = ''
         return true
     } else {
       
         // list letter selected - try again - loose life
-        console.log("invalid letter")
         input__selectedLetter.value = ''
         return false
     }
@@ -257,8 +234,6 @@ function isLetterMatch() {
             return true
         }
     }
-
-    console.log(selectedLetter)
 
 }
 
@@ -298,7 +273,6 @@ function isSecondAttempt(letter) {
         if (letter === attemp) {
             return true
         }
-        console.log(letter +' is in attmps')
     }  
     return false
 }
@@ -308,7 +282,6 @@ function scoreTry() {
     attemps.push(input__selectedLetter.value)
 
     letterAttempsTitle.innerText = 'Attemps: ' +attemps
-    console.log(letterAttempsTitle.innerText)
    
 }
 
@@ -318,12 +291,9 @@ function doMatch() {
 
     for(let i = 0; i < liItems.length; i++) {
         if (selectedLetter === liItems[i].innerText) {
-            console.log(liItems[i] + 'the word contains your letter')
             liItems[i].classList.remove('noneLetter')  
             liItems[i].classList.add('validLetter')
             validLetters += 1
-            console.log('valid letters = ' + validLetters)
-            console.log(liItems.length)
         }
     }
 
@@ -334,7 +304,7 @@ function looselife() {
     if (playerLifes >1) {
         playerLifes -= 1
         playerLifesTitle.innerText = 'lifes: '+playerLifes
-    } else if  (playerLifes === 1) {
+    } else if  (playerLifes === 0) {
         playerLifesTitle.innerText = 'You are death'
         hangmanGame__Game__introLetterButton.disabled = true
     }
@@ -343,25 +313,26 @@ function looselife() {
 }
 function changeHangmanImage(lifes) {
     if (lifes === 6) {
-        hangmanGame__Game__image.classList.add(hangmanImage_1)
+        hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_1.png"
+
     } else if (lifes === 5) {
-        hangmanGame__Game__image.classList.remove(hangmanImage_1)
-        hangmanGame__Game__image.classList.add(hangmanImage_2)
+        hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_2.png"
+
     } else if (lifes === 4) {
-        hangmanGame__Game__image.classList.remove(hangmanImage_2)
-        hangmanGame__Game__image.classList.add(hangmanImage_3)
+        hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_3.png"
+
     } else if (lifes === 3) {
-        hangmanGame__Game__image.classList.remove(hangmanImage_3)
-        hangmanGame__Game__image.classList.add(hangmanImage_4)
+        hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_4.png"
+
     } else if (lifes === 2) {
-        hangmanGame__Game__image.classList.remove(hangmanImage_4)
-        hangmanGame__Game__image.classList.add(hangmanImage_5)
+        hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_5.png"
+
     } else if (lifes === 1) {
-        hangmanGame__Game__image.classList.remove(hangmanImage_5)
-        hangmanGame__Game__image.classList.add(hangmanImage_6)
+        hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_6.png"
+
     } else if (lifes === 0) {
-        hangmanGame__Game__image.classList.remove(hangmanImage_6)
-        hangmanGame__Game__image.classList.add(hangmanImage_7)
+        hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_7.png"
+
     }
 }
 
@@ -370,7 +341,6 @@ function changeHangmanImage(lifes) {
 function isGameEnd(length) {
     if (validLetters === length) {
         hangmanGame__Game.style.backgroundColor = 'green'
-        console.log('WIN!!')
         hangmanGame__Score__winPage.style.display = 'flex'
         hangmanGame__Game__introLetterButton.disabled = true
     }
@@ -379,7 +349,6 @@ function isGameEnd(length) {
 
 /* GAME - SCORES */
 hangmanGame__Score__closeButton.addEventListener('click', () => {
-    hangmanGame__Score__closeButton.style.backgroundColor = 'red'
     hangmanGame__Score.style.display = 'none'
 })
 
@@ -393,19 +362,29 @@ hangmanGame__Game__winButton.addEventListener('click', () => {
 
 
 
-let scores =[]
-let scoresInLocalStorage = localStorage.setItem('scores', scores)
+let scores = []
+
 
 function addResults() {
-    let silc = localStorage.getItem('scores')
-    for(let score of scores) {
-        const scoreNode = document.createElement("li");
-        const scoreTextnode = document.createTextNode(JSON.stringify(score.userName+": "+score.lifes));
-        scoreNode.appendChild(scoreTextnode);
-        hangmanGame__Score__list.appendChild(scoreNode);
-    }
+    hangmanGame__Score__list.replaceChildren()
 
-    console.log('localStorage: ' + silc)
+    const scoresLS = localStorage.getItem('scores')
+    console.log('localStorage: ' + scoresLS)
+
+   
+
+    const parseScoresLS = JSON.parse(scoresLS)
+    console.log('PARSElocalStorage: ' + parseScoresLS)
+
+    if (parseScoresLS !== null) {
+        for(let score of parseScoresLS) {
+            const scoreNode = document.createElement("li");
+            const scoreTextnode = document.createTextNode(JSON.stringify(score.userName+": "+score.lifes));
+            scoreNode.appendChild(scoreTextnode);
+            hangmanGame__Score__list.appendChild(scoreNode);
+           
+        }
+    }
 }
 
 function safeUserScore(userName, playerLifes) {
@@ -414,18 +393,8 @@ function safeUserScore(userName, playerLifes) {
         "lifes": playerLifes
     }
     scores.push(userScore)
-     localStorage.setItem("scores", scores)
-    // scoresInLocalStorage = localStorage.setItem('scores', scores)
-    console.log('score: ' +JSON.stringify(scores))
-    // addResultsToList(userScore)
+    localStorage.setItem("scores", JSON.stringify(scores))
+    console.log(userScore)
+
+    console.log('SAFE score: ' +scores)
 }
-
-
-// function addResultsToList(score) {
-  
-//         const scoreNode = document.createElement("li");
-//         const scoreTextnode = document.createTextNode(JSON.stringify(score.userName+": "+score.lifes));
-//         scoreNode.appendChild(scoreTextnode);
-//         hangmanGame__Score__list.appendChild(scoreNode);
-    
-// }
