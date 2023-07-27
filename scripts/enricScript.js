@@ -152,8 +152,7 @@ function startGame() {
     resetGame()
     selectWord()
     addWord()
-    playerLifesTitle.innerText = 'lifes: '+playerLifes
-    hangmanGame__Game__introLetterButton.disabled = false
+  
 
 }
 function resetGame() {
@@ -163,6 +162,13 @@ function resetGame() {
    
     attemps = [];
     playerLifes = initialLifes;
+    playerLifesTitle.innerText = 'lifes: '+playerLifes
+    hangmanGame__Game__introLetterButton.disabled = false
+    hangmanGame__Game__image.src = "./srcs/memoryGame/hagman_1.png"
+    hangmanGame__Game.style.backgroundColor = 'lightseagreen'
+
+
+
 }
 
 function selectWord() {
@@ -202,7 +208,7 @@ function clearWord() {
 
 let selectedLetter;
 let attemps = [];
-const initialLifes = 6
+const initialLifes = 7
 let playerLifes = initialLifes;
 
 const hangmanGame__Game__introLetterButton = document.querySelector('.hangmanGame__Game__introLetterButton')
@@ -303,15 +309,21 @@ function doMatch() {
         }
     }
 
-    isGameEnd(liItems.length)
+    isWinGame(liItems.length)
 }
 
 function looselife() {
     if (playerLifes >1) {
+        console.log('lifes left: ' +(playerLifes-1))
+
         playerLifes -= 1
         playerLifesTitle.innerText = 'lifes: '+playerLifes
-    } else if  (playerLifes === 0) {
+    } else if  (playerLifes == 1) {
+        console.log('lifes left: '+ playerLifes+' = you are death')
+        playerLifes -= 1
+
         playerLifesTitle.innerText = 'You are death'
+        hangmanGame__Game__introLetterButton.disabled = true
         hangmanGame__Game__introLetterButton.disabled = true
     }
     changeHangmanImage(playerLifes)
@@ -344,7 +356,7 @@ function changeHangmanImage(lifes) {
 
 
 
-function isGameEnd(length) {
+function isWinGame(length) {
     if (validLetters === length) {
         hangmanGame__Game.style.backgroundColor = 'green'
         hangmanGame__Score__winPage.style.display = 'flex'
