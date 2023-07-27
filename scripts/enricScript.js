@@ -137,8 +137,11 @@ function hideError(element) {
 
 const hangmanGame__Game__initGameButton = document.querySelector('.hangmanGame__Game__initGameButton')
 const wordLettersList = document.getElementById('wordLettersList')
-const playingWords = ['A']
-// ['Apple', 'Banana', 'Apricot', 'Olive', 'Oranges',	'Ramphal', 'Papaya', 'Peach', 'Pomegranate', 'Pineapple', 'Rambutan', 'Raspberries', 'Strawberries','Starfruit',]
+const fruits = ['Apple', 'Banana', 'Apricot', 'Olive', 'Oranges',	'Ramphal', 'Papaya', 'Peach', 'Pomegranate', 'Pineapple', 'Rambutan', 'Raspberries', 'Strawberries','Starfruit',]
+const sports = ['Soccer', 'Basketball', 'Tennis', 'Baseball', 'Golf', 'Running', 'Volleyball', 'Badminton', 'Archery', 'Cycling']
+const animals = ['Dog',	'Cow',	'Cat', 'Donkey', 'Tiger', 'Lion', 'Leopard', 'Bear', 'Turtle', 'Tortoise', 'Rabbit', 'Porcupine', 'Hare']
+const issueList = [fruits, sports, animals]
+
 let wordArray;
 
 
@@ -163,8 +166,11 @@ function resetGame() {
 }
 
 function selectWord() {
-    const index = Math.floor(Math.random() * playingWords.length);
-    const selectedWord = playingWords[index].toUpperCase()
+    const issueIndex = Math.floor(Math.random() * issueList.length);
+    const selectedIssue = issueList[issueIndex]
+
+    const wordIndex = Math.floor(Math.random() * selectedIssue.length);
+    const selectedWord = selectedIssue[wordIndex].toUpperCase()
     const stringArray = selectedWord.split('')
     wordArray = stringArray
 
@@ -360,24 +366,22 @@ hangmanGame__Game__winButton.addEventListener('click', () => {
 
 /* DATA USERS-RESULTS */
 
+function getAndPArseLSinfo(key) {
+    const objectsLS = localStorage.getItem(key)
 
+    const parseInfoLS = JSON.parse(objectsLS)
 
-let scores = []
+    return parseInfoLS
+}
 
 
 function addResults() {
     hangmanGame__Score__list.replaceChildren()
 
-    const scoresLS = localStorage.getItem('scores')
-    console.log('localStorage: ' + scoresLS)
+ let scores = getAndPArseLSinfo('scores') 
 
-   
-
-    const parseScoresLS = JSON.parse(scoresLS)
-    console.log('PARSElocalStorage: ' + parseScoresLS)
-
-    if (parseScoresLS !== null) {
-        for(let score of parseScoresLS) {
+    if (scores !== null) {
+        for(let score of scores) {
             const scoreNode = document.createElement("li");
             const scoreTextnode = document.createTextNode(JSON.stringify(score.userName+": "+score.lifes));
             scoreNode.appendChild(scoreTextnode);
@@ -392,9 +396,20 @@ function safeUserScore(userName, playerLifes) {
         "userName": userName,
         "lifes": playerLifes
     }
-    scores.push(userScore)
-    localStorage.setItem("scores", JSON.stringify(scores))
-    console.log(userScore)
 
-    console.log('SAFE score: ' +scores)
+
+    let scores = getAndPArseLSinfo('scores') 
+    
+    if (scores !== null) {
+        scores.push(userScore)
+      console.log('push: ' + scores)
+      localStorage.setItem("scores", JSON.stringify(scores))
+
+    } else {
+        let newArray = [userScore]
+        localStorage.setItem("scores", JSON.stringify(newArray))
+        console.log('save: ' + scores)
+    }
+
+    console.log(userScore)
 }
